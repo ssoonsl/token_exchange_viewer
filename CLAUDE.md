@@ -64,38 +64,57 @@ This is a Token Swap Interface - a React-based single-page application that allo
 4. **Responsive Design**: Mobile and desktop compatibility
 5. **Error Handling**: Graceful API error handling with user feedback
 
-## Current phase
+## Current Phase
 
-**PHASE 3: Ready for Implementation (CODE IMPLEMENTATION)**
+**PHASE 3: MVP IMPLEMENTATION (SIMPLIFIED APPROACH)**
 
-**Architecture refinement completed successfully.** All planning tasks have been completed and the project documentation now includes:
+**🎯 FOCUS: Build working MVP first, optimize later**
 
-✅ **Completed Phase 2 Tasks:**
-- Updated Technology Stack with full-stack architecture
-- Revised Project Structure with API proxy pattern
-- Enhanced Development Commands for both client and server
-- Documented Security Patterns and Performance Strategies  
-- Created comprehensive Implementation Roadmap
-- Added Known Challenges section with solutions
+After critical review, we've identified over-engineered patterns that should be implemented AFTER the MVP. The current implementation will focus on core functionality with minimal complexity.
 
-**READY TO BEGIN CODING:** The project is now ready for implementation following the security-first approach outlined in the Implementation Roadmap.
+### MVP Implementation Priorities
 
-**Next Steps:**
-1. **Initialize Project Structure** - Set up the basic Vite + Vercel project structure
-2. **Implement Security Foundation** - Start with Phase 1 of the Implementation Roadmap (API layer and security)
-3. **Build Core Functionality** - Follow the phased approach for systematic development
+**✅ IMPLEMENT NOW (MVP):**
+- Basic Vite + React + TypeScript setup
+- Simple Vercel API functions (no middleware)
+- Redux Toolkit + RTK Query for state
+- Basic Tailwind styling (no animations)
+- Core components: TokenSelector, AmountInput, SwapInterface
+- Essential error handling
+- Basic integration tests
 
-The comprehensive planning phase ensures we have a clear roadmap for building a secure, performant, and maintainable token swap interface.
+**🚀 IMPLEMENT LATER (POST-MVP ENHANCEMENTS):**
+- React performance optimizations (memo, useMemo, useCallback)
+- Code splitting and lazy loading
+- Multi-layer caching strategies
+- Advanced error boundaries
+- Comprehensive test suites (E2E, >90% coverage)
+- Framer Motion animations
+- Accessibility features
+- Rate limiting and security middleware
+- Advanced monitoring and performance tracking
+
+### Next Steps (Immediate):
+1. **Initialize MVP Structure** - Basic Vite + Vercel setup
+2. **Core API Layer** - Simple serverless functions without optimization
+3. **Basic UI Components** - Functional components without performance optimization
+4. **State Management** - Redux setup for API and UI state
+5. **Integration Testing** - Essential user flow tests only
 
 ## Development Commands
 
 **Initial Setup** (when implementing):
 
 ```bash
+# MVP Setup (minimal dependencies)
 npm create vite@latest token-swap-interface -- --template react-ts
 cd token-swap-interface
-npm install @reduxjs/toolkit react-redux @funkit/api-base framer-motion react-hook-form
-npm install -D @testing-library/react vitest playwright eslint prettier @vercel/node
+npm install @reduxjs/toolkit react-redux @funkit/api-base
+npm install -D @testing-library/react vitest eslint prettier @vercel/node
+
+# 🚀 POST-MVP: Additional packages to install later
+# npm install framer-motion react-hook-form
+# npm install -D playwright
 ```
 
 **Development**:
@@ -109,15 +128,16 @@ npm run preview      # Preview production build
 # Full-stack development (with API routes)
 vercel dev           # Start local development with API routes (port 3000)
 
-# Testing
-npm run test         # Run unit tests (client + API)
-npm run test:e2e     # Run e2e tests with Playwright
-npm run test:api     # Run API endpoint tests
-
-# Code quality
-npm run lint         # Run ESLint (client + API)
+# MVP Testing
+npm run test         # Run integration tests only
+npm run lint         # Run ESLint
 npm run format       # Format code with Prettier
-npm run type-check   # TypeScript checking for both client and API
+npm run type-check   # TypeScript checking
+
+# 🚀 POST-MVP: Additional commands to add later
+# npm run test:e2e     # Run e2e tests with Playwright
+# npm run test:unit    # Comprehensive unit tests
+# npm run test:api     # API endpoint tests
 ```
 
 **Environment Setup**:
@@ -171,14 +191,22 @@ vercel env add FUNKIT_API_KEY production
 
 ### Component Architecture
 
+**🚀 POST-MVP ENHANCEMENTS (IMPLEMENT LATER):**
 - **Container/Presentation** pattern separation
 - **Compound components** for TokenSelector
-- **Custom hooks** for reusable business logic
+- **Advanced custom hooks** for reusable business logic
 - **Error Boundaries** for graceful error handling
 - **Framer Motion** for animations and transitions
 
+**✅ MVP APPROACH:**
+- Simple functional components
+- Basic custom hooks (useCalculations, useDebounce)
+- Standard React error handling
+- CSS transitions only (no animation library)
+
 ### Performance & Caching Strategies
 
+**🚀 POST-MVP ENHANCEMENTS (IMPLEMENT LATER):**
 - **Multi-Layer Caching**:
   - Browser cache for static assets
   - RTK Query cache for API responses
@@ -189,6 +217,12 @@ vercel env add FUNKIT_API_KEY production
   - Batch API calls where possible
 - **Code Splitting**: Route-based and component-based lazy loading
 - **Memoization**: Strategic use of React.memo and useMemo for expensive calculations
+
+**✅ MVP APPROACH:**
+- Single caching layer (RTK Query only)
+- Basic debounced inputs (simple setTimeout)
+- No code splitting initially
+- Standard React components without memoization
 
 ## Environment Variables
 
@@ -222,10 +256,18 @@ VITE_DEBUG_MODE=true
 
 ## Testing Strategy
 
-- **Unit Tests**: Components and utility functions
-- **Integration Tests**: Complete user flows
+**🚀 POST-MVP ENHANCEMENTS (IMPLEMENT LATER):**
+- **Comprehensive Unit Tests**: All components and utility functions
 - **E2E Tests**: Browser automation with Playwright
+- **API Testing**: Full serverless function test suites
 - **Target Coverage**: >90%
+- **Performance Testing**: Load testing and optimization
+
+**✅ MVP APPROACH:**
+- **Integration Tests**: Core user flows only
+- **Basic Unit Tests**: Critical components
+- **Target Coverage**: 70%
+- **Manual Testing**: UI and API functionality
 
 ## Supported Tokens Configuration
 
@@ -238,11 +280,18 @@ Tokens are configured in `src/utils/constants.ts`:
 
 ## Performance Considerations
 
+**🚀 POST-MVP ENHANCEMENTS (IMPLEMENT LATER):**
 - **Code splitting** with React.lazy()
-- **Memoization** for expensive calculations
-- **Debounced inputs** to reduce API calls
-- **Price caching** to minimize network requests
-- **Bundle optimization** with Vite
+- **Advanced memoization** for expensive calculations
+- **Bundle optimization** with manual chunks
+- **Server-side caching** with Redis/Memory
+- **Request deduplication** and batching
+
+**✅ MVP APPROACH:**
+- **Basic debounced inputs** to reduce API calls
+- **RTK Query caching** for API responses
+- **Default Vite optimization** (no custom config)
+- **Simple state management** without over-optimization
 
 ## Security Guidelines
 
@@ -263,70 +312,88 @@ Tokens are configured in `src/utils/constants.ts`:
 
 ## Implementation Roadmap
 
-### Phase 1: Security Foundation (Priority: Critical)
-1. **API Layer Setup**
-   - Create Vercel serverless functions structure
-   - Implement FunKit API proxy endpoints
-   - Add request validation and sanitization
-   - Configure environment variables and secrets
+### ✅ MVP IMPLEMENTATION (CURRENT FOCUS)
 
-2. **Security Implementation**
-   - Add rate limiting middleware
-   - Implement CORS policies
-   - Set up request/response validation schemas
-   - Add error handling with safe error messages
+**Phase 1: MVP Foundation**
+1. **Basic Project Setup**
+   - Initialize Vite + React + TypeScript
+   - Set up basic Vercel serverless functions
+   - Configure environment variables
+   - Basic ESLint and Prettier setup
 
-### Phase 2: Core Functionality (Priority: High)
-1. **Token Data Management**
-   - Implement token list API endpoint
-   - Create token price fetching API endpoint
-   - Add server-side caching layer
-   - Build client-side service layer
+2. **Core API Layer**
+   - Simple token list endpoint (`/api/tokens/list`)
+   - Simple token price endpoint (`/api/tokens/price`)
+   - Basic error handling (no middleware)
+   - Environment variable security only
 
-2. **UI Components**
-   - Create base component structure
-   - Implement TokenSelector with search/filter
-   - Build AmountInput with validation
-   - Develop SwapInterface main component
+**Phase 2: MVP Components**
+1. **Basic UI Components**
+   - TokenSelector (simple grid, no search)
+   - AmountInput (basic validation)
+   - SwapInterface (main layout)
+   - Basic Tailwind styling
 
-### Phase 3: State Management & Integration (Priority: High)
-1. **Redux Setup**
-   - Configure Redux Toolkit store
-   - Implement RTK Query API slice
-   - Create state management for tokens and amounts
-   - Add error state management
+2. **State Management**
+   - Redux Toolkit store setup
+   - RTK Query for API calls
+   - Basic token and amount state
+   - Simple error state
 
-2. **Real-time Calculations**
-   - Implement price calculation logic
-   - Add debounced API calls
-   - Create real-time amount updates
-   - Handle currency formatting
+**Phase 3: MVP Integration**
+1. **Core Functionality**
+   - Token selection logic
+   - USD amount input and validation
+   - Real-time price calculations
+   - Basic currency formatting
 
-### Phase 4: Testing & Quality Assurance (Priority: Medium)
-1. **API Testing**
-   - Unit tests for serverless functions
-   - Integration tests for API endpoints
-   - Mock external API dependencies
-   - Performance testing for caching
+2. **Essential Testing**
+   - Integration test for main swap flow
+   - Basic component tests for critical functionality
+   - Manual testing for edge cases
 
-2. **Frontend Testing**
-   - Component unit tests with RTL
-   - Integration tests for user flows
+---
+
+### 🚀 POST-MVP ENHANCEMENTS (IMPLEMENT AFTER MVP)
+
+**Phase 4: Security & Performance Hardening**
+1. **Advanced Security**
+   - Rate limiting middleware
+   - CORS policies
+   - Request/response validation schemas
+   - Advanced error handling
+
+2. **Performance Optimization**
+   - Server-side caching layer
+   - Request deduplication
+   - Code splitting implementation
+   - Bundle optimization
+
+**Phase 5: Enhanced User Experience**
+1. **Advanced Components**
+   - TokenSelector with search/filter
+   - Compound component patterns
+   - Framer Motion animations
+   - Loading states and transitions
+
+2. **React Optimizations**
+   - React.memo for components
+   - useMemo for expensive calculations
+   - useCallback for event handlers
+   - Error boundaries
+
+**Phase 6: Comprehensive Testing & Accessibility**
+1. **Testing Suite**
+   - Comprehensive unit tests (>90% coverage)
    - E2E tests with Playwright
-   - Accessibility testing
+   - API endpoint testing
+   - Performance testing
 
-### Phase 5: Performance & Polish (Priority: Low)
-1. **Optimization**
-   - Implement code splitting
-   - Add memoization where needed
-   - Optimize bundle size
-   - Performance monitoring
-
-2. **User Experience**
-   - Add loading states and animations
-   - Implement error boundaries
-   - Polish responsive design
-   - Add accessibility features
+2. **Accessibility & Polish**
+   - WCAG 2.1 AA compliance
+   - Keyboard navigation
+   - Screen reader support
+   - Advanced responsive design
 
 ### Testing Strategy with API Mocking
 - **Development**: Mock API responses for consistent testing
