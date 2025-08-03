@@ -2,6 +2,7 @@ import { VercelRequest, VercelResponse } from "@vercel/node";
 import axios from "axios";
 import { TokenPrice } from "../../src/types/index.js";
 import { sendSuccess, sendError, sendMethodNotAllowed, sendBadRequest } from "../utils/response.js";
+import { logger } from "../utils/logger.js";
 
 export default async function handler(
   req: VercelRequest,
@@ -43,7 +44,7 @@ export default async function handler(
     return sendSuccess(res, tokenPrice, 60);
 
   } catch (error) {
-    console.error("Price fetch error:", error);
+    logger.error("Price fetch error:", error);
     return sendError(res, "Failed to fetch token price");
   }
 }

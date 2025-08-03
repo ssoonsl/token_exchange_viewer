@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Token, TokenPrice, ApiResponse } from '@types/index';
+import type { Token, TokenPrice, ApiResponse } from '@/types';
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 if (!baseUrl) {
@@ -37,7 +37,7 @@ export const tokensApi = createApi({
         }
         return response.data;
       },
-      providesTags: (result, error, { address, chainId }) => [
+      providesTags: (_, __, { address, chainId }) => [
         { type: 'TokenPrice', id: `${address}-${chainId}` },
       ],
     }),

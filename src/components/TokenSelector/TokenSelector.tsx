@@ -1,4 +1,4 @@
-import { Token } from '@types/index';
+import type { Token } from '@/types';
 
 interface TokenSelectorProps {
   tokens: Token[];

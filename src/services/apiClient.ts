@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { Token, TokenPrice, ApiResponse } from '@types/index';
+import type { Token, TokenPrice, ApiResponse } from '@/types';
+import { logger } from '@utils/logger';
 
 class ApiClient {
   private baseUrl: string;
@@ -24,7 +25,7 @@ class ApiClient {
       
       return response.data.data || [];
     } catch (error) {
-      console.error('API Error:', error);
+      logger.error('API Error in getTokenList:', error);
       throw error;
     }
   }
@@ -48,7 +49,7 @@ class ApiClient {
       
       return response.data.data;
     } catch (error) {
-      console.error('API Error:', error);
+      logger.error('API Error in getTokenPrice:', error);
       throw error;
     }
   }

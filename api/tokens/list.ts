@@ -1,6 +1,7 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { Token } from "../../src/types/index.js";
 import { sendSuccess, sendError, sendMethodNotAllowed } from "../utils/response.js";
+import { logger } from "../utils/logger.js";
 
 export default async function handler(
   req: VercelRequest,
@@ -48,7 +49,7 @@ export default async function handler(
 
     return sendSuccess(res, tokens, 300);
   } catch (error) {
-    console.error("Token list error:", error);
+    logger.error("Token list error:", error);
     return sendError(res, "Failed to fetch token list");
   }
 }
