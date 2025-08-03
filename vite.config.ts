@@ -18,10 +18,12 @@ export default defineConfig({
   },
   server: {
     port: 5173,
+    open: "/Applications/Firefox Developer Edition.app",
   },
   test: {
     globals: true,
     environment: "jsdom",
     setupFiles: ["./src/__tests__/setup.ts"],
+    exclude: ["**/node_modules/**", "**/dist/**", "**/e2e/**", "**/.{idea,git,cache,output,temp}/**", "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*"],
   },
 });

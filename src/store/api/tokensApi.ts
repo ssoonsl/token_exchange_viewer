@@ -1,15 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { Token, TokenPrice, ApiResponse } from '@/types';
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
-if (!baseUrl) {
-  throw new Error('VITE_API_BASE_URL environment variable is not configured');
-}
-
 export const tokensApi = createApi({
   reducerPath: 'tokensApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${baseUrl}/tokens`,
+    baseUrl: process.env.NODE_ENV === 'test' ? 'http://localhost:3000/api/tokens' : '/api/tokens',
   }),
   tagTypes: ['Token', 'TokenPrice'],
   endpoints: (builder) => ({

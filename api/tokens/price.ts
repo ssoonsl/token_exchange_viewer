@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import axios from "axios";
+import { getAssetPriceInfo } from "@funkit/api-base";
 import { TokenPrice } from "../../src/types/index.js";
 import { sendSuccess, sendError, sendMethodNotAllowed, sendBadRequest } from "../utils/response.js";
 import { logger } from "../utils/logger.js";
@@ -24,19 +24,21 @@ export default async function handler(
       throw new Error("API key not configured");
     }
 
-    // Use axios to call FunKit API
-    const response = await axios.post('https://api.funkit.io/v1/assets/price', {
-      address: address as string,
-      chainId: parseInt(chainId as string)
-    }, {
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
+    // Use @funkit/api-base to call FunKit API
+    const response = await getAssetPriceInfo({
+      chainId: chainId as string,
+      assetTokenAddress: address as string,
+      apiKey,
+      logger: {
+        debug: (title: string, data?: object) => logger.debug(title, data),
+        error: (title: string, data?: object) => logger.error(title, data),
+        info: (title: string, data?: object) => logger.info(title, data),
+        warn: (title: string, data?: object) => logger.warn(title, data),
       }
     });
 
     const tokenPrice: TokenPrice = {
-      price: response.data.price,
+      price: response.unitPrice,
       timestamp: Date.now(),
       currency: "USD"
     };
