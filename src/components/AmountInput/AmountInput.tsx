@@ -56,8 +56,8 @@ export function AmountInput({
     <div className="space-y-2">
       <label className="block text-sm font-medium text-gray-700">{label}</label>
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <span className="text-gray-500 text-lg">$</span>
+        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <span className="text-gray-500 text-lg font-medium">$</span>
         </div>
         <input
           type="text"
@@ -66,7 +66,7 @@ export function AmountInput({
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           placeholder={placeholder}
-          className={`block w-full pl-8 pr-3 py-3 text-lg border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+          className={`block w-full pl-10 pr-3 py-3 text-lg border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
             error ? "border-red-300" : "border-gray-300"
           }`}
           data-testid="usd-amount-input"

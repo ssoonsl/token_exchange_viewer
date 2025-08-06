@@ -83,7 +83,7 @@ export function SwapInterface() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg space-y-6">
+    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg space-y-6">
       <div className="text-center">
         <h1 className="text-2xl font-bold text-gray-900">Token Swap</h1>
         <p className="text-gray-600 mt-1">Select tokens and enter USD amount</p>
