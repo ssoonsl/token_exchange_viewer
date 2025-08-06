@@ -1,4 +1,5 @@
 import type { Token } from '@/types';
+import { getChainName } from '@/utils/helpers';
 
 interface TokenSelectorProps {
   tokens: Token[];
@@ -37,7 +38,7 @@ export function TokenSelector({ tokens, selectedToken, onTokenSelect, isLoading 
           <div className="font-medium text-gray-900">{token.symbol}</div>
           <div className="text-sm text-gray-500">{token.name}</div>
           <div className="text-xs text-gray-400 mt-1">
-            Chain {token.chainId}
+            {getChainName(token.chainId)}
           </div>
         </button>
       ))}

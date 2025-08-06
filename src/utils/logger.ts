@@ -23,7 +23,6 @@ class ConsoleLogger implements Logger {
   }
 
   error(message: string, ...args: unknown[]): void {
-    // Always log errors, even in production
     console.error(`[ERROR] ${message}`, ...args);
   }
 

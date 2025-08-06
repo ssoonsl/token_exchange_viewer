@@ -89,7 +89,6 @@ export function SwapInterface() {
         <p className="text-gray-600 mt-1">Select tokens and enter USD amount</p>
       </div>
 
-      {/* USD Amount Input */}
       <div>
         <AmountInput
           value={usdAmount}
@@ -100,7 +99,6 @@ export function SwapInterface() {
         />
       </div>
 
-      {/* Source Token Selection */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-3">From Token</label>
         <TokenSelector
@@ -111,7 +109,6 @@ export function SwapInterface() {
         />
       </div>
 
-      {/* Target Token Selection */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-3">To Token</label>
         <TokenSelector
@@ -122,7 +119,6 @@ export function SwapInterface() {
         />
       </div>
 
-      {/* Swap Summary */}
       {(calculations || isCalculating) && (
         <div className="border-t pt-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4" data-testid="swap-summary">
@@ -176,7 +172,6 @@ export function SwapInterface() {
         </div>
       )}
 
-      {/* Status Messages */}
       {sourceToken &&
         targetToken &&
         usdAmount &&
