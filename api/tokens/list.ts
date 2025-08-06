@@ -1,7 +1,7 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { Token } from "../../src/types/index.js";
-import { sendSuccess, sendError, sendMethodNotAllowed } from "../utils/response.js";
-import { logger } from "../utils/logger.js";
+import { Token } from "../../src/types/index";
+import { sendSuccess, sendError, sendMethodNotAllowed } from "../utils/response";
+import { logger } from "../utils/logger";
 
 export default async function handler(
   req: VercelRequest,

@@ -1,4 +1,4 @@
-import { Logger } from "../../src/utils/logger.js";
+import { Logger } from "../../src/utils/logger";
 
 class ServerLogger implements Logger {
   private isDevelopment = process.env.NODE_ENV !== 'production';

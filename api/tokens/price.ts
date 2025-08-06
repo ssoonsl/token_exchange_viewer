@@ -1,8 +1,8 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { getAssetPriceInfo } from "@funkit/api-base";
-import { TokenPrice } from "../../src/types/index.js";
-import { sendSuccess, sendError, sendMethodNotAllowed, sendBadRequest } from "../utils/response.js";
-import { logger } from "../utils/logger.js";
+import { TokenPrice } from "../../src/types/index";
+import { sendSuccess, sendError, sendMethodNotAllowed, sendBadRequest } from "../utils/response";
+import { logger } from "../utils/logger";
 
 export default async function handler(
   req: VercelRequest,
