@@ -17,7 +17,7 @@ export default async function handler(
         id: "usdc-1",
         symbol: "USDC",
         name: "USD Coin",
-        address: "0xA0b86a33E6441f8bA77C53D08b0e5577D3E5ECb4",
+        address: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         chainId: 1,
         decimals: 6,
       },
